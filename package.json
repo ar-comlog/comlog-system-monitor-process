@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/ar-comlog/comlog-system-monitor-process#readme",
   "dependencies": {
-    "comlog-event-handler": "=>1.0.1",
+    "comlog-event-handler": ">=1.0.1",
     "comlog-process-manager": ">=0.0.1"
   }
 }

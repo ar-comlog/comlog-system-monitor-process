@@ -1,0 +1,28 @@
+{
+  "name": "comlog-system-monitor-process",
+  "version": "1.0.0",
+  "description": "Process monitoring service",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ar-comlog/comlog-system-monitor-process.git"
+  },
+  "keywords": [
+    "process",
+    "monitoring",
+    "memory"
+  ],
+  "author": "COMLOG GmbH",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ar-comlog/comlog-system-monitor-process/issues"
+  },
+  "homepage": "https://github.com/ar-comlog/comlog-system-monitor-process#readme",
+  "dependencies": {
+    "comlog-event-handler": "^1.0.1",
+    "comlog-process-manager": "0.0.1"
+  }
+}

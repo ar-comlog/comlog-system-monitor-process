@@ -10,8 +10,12 @@ $ npm install -s comlog-system-monitor-process
 var Service = require('comlog-system-monitor-process');
 
 var csmf = new Service({
-	interval: 60000, // 1 Minute
-	name: 'notepad++.exe' // Required
+	name: 'notepad++.exe', // Required
+	interval: 60000, // Optional 1 Minute
+	maxMemory: '10M', // Optional maximal memory usage of all processes
+	minMemory: '1M', // Optional minimal memory usage of all processes
+	maxCount: 10, // Optional max count of processes
+	minCount: 3 // Optional min count of processes
 });
 
 csmf.on('error', function(err) {

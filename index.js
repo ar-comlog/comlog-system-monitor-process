@@ -84,25 +84,25 @@ function ComlogFileTimeWatcher(options) {
 		CPM.lookup(options, function (err, resultList) {
 			if (err !== null) {
 				if (_self.debug) console.error(err.stack || err);
-				_self.trigger('error', [new Error("Process \"'+options+'\" check error \n"+err.message)]);
+				_self.trigger('error', [new Error("Process \""+options.name+"\" check error \n"+err.message)]);
 				if (_self.satus === true) _self.trigger('down');
 				_self.satus = false;
 			}
 			else {
 				if (resultList.length > 0) {
-					var new_status = true, msg = 'Process "'+options+'" check ok';
+					var new_status = true, msg = 'Process "'+options.name+'" check ok';
 					_self.maxMemory = _memConvert(_self.maxMemory);
 					_self.minMemory = _memConvert(_self.minMemory);
 
 					// to many processes
 					if (_self.maxCount > -1 && _self.maxCount < resultList.length) {
 						new_status = false;
-						msg = "To many \"'+options+'\" processes";
+						msg = "To many \""+options.name+"\" processes";
 					}
 					// To few processes
 					else if (_self.minCount > -1 && _self.minCount > resultList.length) {
 						new_status = false;
-						msg = "To few \"'+options+'\" processes";
+						msg = "To few \""+options.name+"\" processes";
 					}
 					// out of memory
 					else if (_self.maxMemory > -1 || _self.minMemory > -1) {
@@ -112,11 +112,11 @@ function ComlogFileTimeWatcher(options) {
 						}
 						if (_self.maxMemory > -1 && _self.maxMemory < memsum) {
 							new_status = false;
-							msg = "Big memory \"'+options+'\" usage";
+							msg = "Big memory \""+options.name+"\" usage";
 						}
 						else if (_self.maxMemory > -1 && _self.minMemory > memsum) {
 							new_status = false;
-							msg = "Low memory \"'+options+'\" usage";
+							msg = "Low memory \""+options.name+"\" usage";
 						}
 					}
 
@@ -126,7 +126,7 @@ function ComlogFileTimeWatcher(options) {
 					_self.satus = new_status;
 				}
 				else {
-					if (_self.debug) console.info("Process \"'+options+'\" not found");
+					if (_self.debug) console.info("Process \""+options.name+"\" not found");
 					if (_self.satus === true) _self.trigger('down');
 					_self.satus = false;
 				}

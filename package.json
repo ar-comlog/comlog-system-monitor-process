@@ -1,6 +1,6 @@
 {
   "name": "comlog-system-monitor-process",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Process monitoring service",
   "main": "index.js",
   "scripts": {

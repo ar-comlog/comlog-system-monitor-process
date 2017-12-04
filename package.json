@@ -1,6 +1,6 @@
 {
   "name": "comlog-system-monitor-process",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Process monitoring service",
   "main": "index.js",
   "scripts": {
@@ -23,6 +23,6 @@
   "homepage": "https://github.com/ar-comlog/comlog-system-monitor-process#readme",
   "dependencies": {
     "comlog-event-handler": ">=1.0.1",
-    "comlog-process-manager": ">=0.0.1"
+    "comlog-process-manager": ">=0.0.3"
   }
 }

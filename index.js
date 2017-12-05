@@ -1,12 +1,12 @@
 const CPM = require('comlog-process-manager');
 
-function ComlogFileTimeWatcher(options) {
+function ComlogProcessWatcher(options) {
 	require('comlog-event-handler')(this);
 
 	var	_self = this;
 	this.satus = null; // null = start, true = off, false = on
 	this.debug = false;
-	this.interval = 3000; // 1 Minute
+	this.interval = 60000; // 1 Minute
 	this.maxMemory = -1;
 	this.minMemory = -1;
 	this.maxCount = -1;
@@ -14,6 +14,14 @@ function ComlogFileTimeWatcher(options) {
 
 	// Private funktionen
 	var _running = false, _timer = null;
+
+	// Extracting local options
+	for(var i in options) {
+		if (typeof this[i] != 'undefined') {
+			this[i] = options[i];
+			delete options[i];
+		}
+	}
 
 	function _toFloat(num) {
 		num = num+'';
@@ -72,14 +80,6 @@ function ComlogFileTimeWatcher(options) {
 	function _watch() {
 		if (_running) return;
 		_running = true;
-
-		// Extracting local options
-		for(var i in options) {
-			if (typeof this[i] != 'undefined') {
-				options[i] = options[i];
-				delete options[i];
-			}
-		}
 
 		CPM.lookup(options, function (err, resultList) {
 			if (err !== null) {
@@ -154,4 +154,4 @@ function ComlogFileTimeWatcher(options) {
 	for(var i in options) this[i] = options[i];
 }
 
-module.exports = ComlogFileTimeWatcher;
+module.exports = ComlogProcessWatcher;

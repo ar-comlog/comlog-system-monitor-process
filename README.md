@@ -11,6 +11,7 @@ var Service = require('comlog-system-monitor-process');
 
 var csmf = new Service({
 	name: 'notepad++.exe', // Required
+	command: 'contains:index.js', // Optional (contains: is optional to)
 	interval: 60000, // Optional 1 Minute
 	maxMemory: '10M', // Optional maximal memory usage of all processes
 	minMemory: '1M', // Optional minimal memory usage of all processes

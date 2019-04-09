@@ -12,6 +12,8 @@ function ComlogProcessWatcher(options) {
 	this.maxCount = -1;
 	this.minCount = -1;
 
+	this.logger = console;
+
 	// Private funktionen
 	var _running = false, _timer = null;
 
@@ -83,7 +85,7 @@ function ComlogProcessWatcher(options) {
 
 		CPM.lookup(options, function (err, resultList) {
 			if (err !== null) {
-				if (_self.debug) console.error(err.stack || err);
+				if (_self.debug) _self.logger.error(err.stack || err);
 				_self.trigger('error', [new Error("Process \""+options.name+"\" check error \n"+err.message)]);
 				if (_self.satus === true) _self.trigger('down');
 				_self.satus = false;
@@ -121,12 +123,12 @@ function ComlogProcessWatcher(options) {
 					}
 
 					// check result
-					if (_self.debug) console.info(msg);
+					if (_self.debug) _self.logger.info(msg);
 					if (_self.satus !== null && _self.satus !== new_status) _self.trigger(new_status ? 'up' : 'down');
 					_self.satus = new_status;
 				}
 				else {
-					if (_self.debug) console.info("Process \""+options.name+"\" not found");
+					if (_self.debug) _self.logger.info("Process \""+options.name+"\" not found");
 					if (_self.satus === true) _self.trigger('down');
 					_self.satus = false;
 				}
